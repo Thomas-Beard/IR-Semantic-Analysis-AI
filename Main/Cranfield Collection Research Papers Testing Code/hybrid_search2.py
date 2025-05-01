@@ -10,9 +10,8 @@ vectorStr = ','.join([str(round(x, 6)) for x in queryVector])
 
 SOLR_URL = 'http://localhost:8983/solr/research-papers/select'
 
-# Parameters for hybrid search
 params = {
-    'q': '_text_:(heat transfer over OR heat OR transfer)',  # Full text search
+    'q': '_text_:(heat transfer over OR heat OR transfer)',
     'fl': 'id,title,score',
     'rows': 100,
     'wt': 'json',
@@ -22,12 +21,11 @@ params = {
 
 responseRequest = requests.get(SOLR_URL, params=params)
 
-# Display results
 if responseRequest.status_code == 200:
     docs = responseRequest.json()['response']['docs']
     print("Hybrid Search Results (BM25 + Vector):")
     for doc in docs:
-        print(f"📝 ID: {doc['id']}, Title: {doc['title']}, Score: {doc['score']:.3f}")
+        print(f"ID: {doc['id']}, Title: {doc['title']}, Score: {doc['score']:.3f}")
 else:
     print(f"Error: {responseRequest.status_code}")
     print(responseRequest.text)
