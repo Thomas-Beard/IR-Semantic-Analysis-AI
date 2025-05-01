@@ -121,11 +121,11 @@ class SearchTab(QWidget):
         mode = self.search_mode.currentText()
 
         if not query:
-            self.status_bar.showMessage('❗ Please enter a search query.')
+            self.status_bar.showMessage('Please enter a search query.')
             return
 
         self.search_button.setEnabled(False)
-        self.status_bar.showMessage('🔄 Searching...')
+        self.status_bar.showMessage('Searching...')
 
         self.search_thread = SearchThread(query, mode)
         self.search_thread.result_ready.connect(self.display_results)
