@@ -1,0 +1,27 @@
+CODE:
+- Change variable names for both python files
+- Commit these changes and the files to GitHub
+- Add and implement relevance list 
+- Add example queries to the information tab, and reference it from the TREC GitHub
+- Finish READ ME for documentation & product package 
+
+DOCUMENTATION:
+- Background & Motivations
+- IR Application: development process and technical documentation
+- Evaluation of IR Application
+- References
+
+
+
+
+SUBMISSION AREAS
+-------------------
+
+Main cw submission area:
+- PDF Report
+- TXT file with ALL source code
+- READ ME file which includes documents directory structure, how to install and test package (reference this in the product package read me too)
+
+
+
+
