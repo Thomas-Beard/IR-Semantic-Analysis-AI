@@ -6,6 +6,7 @@
 3. Installation Instructions
 4. Module Explanation
 
+
  ----------------------------------------------
 |	         Important Information             |
  ----------------------------------------------
@@ -13,9 +14,7 @@ o It is vital that all requirements and dependencies are installed before runnin
 
 o The product has only been tested on a Windows OS and therefore should only be ran on the same OS. 
 
-o The pre-trained model the semantic paradigm uses is from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
-
-o Developer GitHub Version Control Link: https://github.com/Thomas-Beard/IR-Semantic-Analysis-AI
+o The pre-trained model the semantic paradigm in the main system uses, is from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 
 
  ----------------------------------------------
