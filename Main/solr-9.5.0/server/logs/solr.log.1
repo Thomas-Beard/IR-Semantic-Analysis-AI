@@ -1,100 +1,154 @@
-2025-05-02 22:12:57.739 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.15+6
-2025-05-02 22:12:58.066 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
-2025-05-02 22:12:58.090 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2025-05-02 22:12:58.099 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
-2025-05-02 22:12:58.099 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 8990
-2025-05-02 22:12:58.099 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0
-2025-05-02 22:12:58.099 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2025-05-02T22:12:58.099414Z
-2025-05-02 22:12:58.103 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\logs\jvm_crash_61880.log
-2025-05-02 22:12:58.133 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr (source: system property: solr.solr.home)
-2025-05-02 22:12:58.163 WARN  (main) [c: s: r: x: t:] o.a.s.c.c.SolrZkClient Using default ZkCredentialsInjector. ZkCredentialsInjector is not secure, it creates an empty list of credentials which leads to 'OPEN_ACL_UNSAFE' ACLs to Zookeeper nodes
-2025-05-02 22:13:17.225 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Waiting up to 30000ms for client to connect to ZooKeeper
-2025-05-02 22:13:26.717 INFO  (zkConnectionManagerCallback-2-thread-1) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager zkClient has connected
-2025-05-02 22:13:26.717 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Client is connected to ZooKeeper
-2025-05-02 22:13:26.717 WARN  (main) [c: s: r: x: t:] o.a.s.c.c.SolrZkClient Using default ZkACLProvider. DefaultZkACLProvider is not secure, it creates 'OPEN_ACL_UNSAFE' ACLs to Zookeeper nodes
-2025-05-02 22:13:26.840 INFO  (main) [c: s: r: x: t:] o.a.s.c.NodeConfig Loading solr.xml from SolrHome (not found in ZooKeeper)
-2025-05-02 22:13:26.840 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\solr.xml
-2025-05-02 22:13:26.870 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/C:/Users/thoma/OneDrive/Documents/GitHub/IR-Semantic-Analysis-AI/Main/solr-9.5.0/lib]
-2025-05-02 22:13:27.694 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
-2025-05-02 22:13:28.019 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
-2025-05-02 22:13:28.019 INFO  (main) [c: s: r: x: t:] o.a.s.c.ZkContainer Zookeeper client=localhost:2181
-2025-05-02 22:13:28.029 INFO  (main) [c: s: r: x: t:] o.a.s.c.DistributedClusterStateUpdater Creating DistributedClusterStateUpdater with useDistributedStateUpdate=false. Solr will be using Overseer based cluster state updates.
-2025-05-02 22:13:28.039 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Waiting up to 15000ms for client to connect to ZooKeeper
-2025-05-02 22:13:37.506 INFO  (zkConnectionManagerCallback-12-thread-1) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager zkClient has connected
-2025-05-02 22:13:37.506 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Client is connected to ZooKeeper
-2025-05-02 22:13:37.568 WARN  (main) [c: s: r: x: t:] o.a.s.c.ZkController Contents of zookeeper /security.json are world-readable; consider setting up ACLs as described in https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-access-control.html
-2025-05-02 22:13:37.611 INFO  (main) [c: s: r: x: t:] o.a.s.c.DistributedClusterStateUpdater Creating DistributedClusterStateUpdater with useDistributedStateUpdate=false. Solr will be using Overseer based cluster state updates.
-2025-05-02 22:13:37.629 INFO  (main) [c: s: r: x: t:] o.a.s.c.OverseerElectionContext I am going to be the leader localhost:8990_solr
-2025-05-02 22:13:37.639 INFO  (main) [c: s: r: x: t:] o.a.s.c.Overseer Overseer (id=72069977915195393-localhost:8990_solr-n_0000000027) starting
-2025-05-02 22:13:37.710 INFO  (main) [c: s: r: x: t:] o.a.s.c.ZkController Register node as live in ZooKeeper:/live_nodes/localhost:8990_solr
-2025-05-02 22:13:37.710 INFO  (OverseerStateUpdate-72069977915195393-localhost:8990_solr-n_0000000027) [c: s: r: x: t:] o.a.s.c.Overseer Starting to work on the main queue : localhost:8990_solr
-2025-05-02 22:13:37.729 INFO  (OverseerStateUpdate-72069977915195393-localhost:8990_solr-n_0000000027) [c: s: r: x: t:] o.a.s.c.c.ZkStateReader Updated live nodes from ZooKeeper... (0) -> (1)
-2025-05-02 22:13:37.778 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
-2025-05-02 22:13:56.958 WARN  (main) [c: s: r: x: t:] o.a.s.h.a.SystemInfoHandler Resolving canonical hostname for local host took 18.941 seconds, possible DNS misconfiguration. Set the 'solr.dns.prevent.reverse.lookup'  sysprop to true on startup to prevent future lookups if DNS can not be fixed.
-2025-05-02 22:13:57.133 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr
-2025-05-02 22:13:57.134 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [research-papers_shard1_replica_n1]
-2025-05-02 22:13:57.189 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
-2025-05-02 22:13:57.304 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.s.IndexSchema Schema name=default-config
-2025-05-02 22:13:57.850 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
-2025-05-02 22:13:57.868 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2025-05-02 22:13:57.892 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
-2025-05-02 22:13:57.895 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.IndexSchema Schema name=default-config
-2025-05-02 22:13:57.969 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2025-05-02 22:13:57.969 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.CoreContainer Creating SolrCore 'research-papers_shard1_replica_n1' using configuration from configset _default, trusted=true
-2025-05-02 22:13:58.060 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrCore Opening new SolrCore at [C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\research-papers_shard1_replica_n1], dataDir=[C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\research-papers_shard1_replica_n1\data\]
-2025-05-02 22:13:58.818 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2025-05-02 22:13:59.379 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@2f40a43{solr-jetty-context.xml,/solr,file:///C:/Users/thoma/OneDrive/Documents/GitHub/IR-Semantic-Analysis-AI/Main/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server/solr-webapp/webapp}
-2025-05-02 22:13:59.387 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\logs\2025_05_02.request.log
-2025-05-02 22:13:59.397 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@18f20260{HTTP/1.1, (http/1.1, h2c)}{127.0.0.1:8990}
-2025-05-02 22:13:59.398 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@1568159{STARTING}[10.0.19,sto=0] @67529ms
-2025-05-02 22:13:59.539 INFO  (qtp85415531-29-localhost-1) [c: s: r: x: t:localhost-1] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=javabin&version=2} status=0 QTime=47
-2025-05-02 22:13:59.578 INFO  (qtp85415531-59-localhost-2) [c: s: r: x: t:localhost-2] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=CLUSTERSTATUS&wt=javabin&version=2} status=0 QTime=14
-2025-05-02 22:14:00.330 INFO  (qtp85415531-62-localhost-4) [c: s: r: x: t:localhost-4] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1746224040295} status=0 QTime=0
-2025-05-02 22:14:00.406 INFO  (qtp85415531-30-localhost-5) [c: s: r: x: t:localhost-5] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1746224040295} status=0 QTime=76
-2025-05-02 22:14:00.417 INFO  (qtp85415531-29-localhost-7) [c: s: r: x: t:localhost-7] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST&wt=json&_=1746224040295} status=0 QTime=3
-2025-05-02 22:14:00.422 INFO  (qtp85415531-28-localhost-8) [c: s: r: x: t:localhost-8] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LISTALIASES&wt=json&_=1746224040295} status=0 QTime=0
-2025-05-02 22:14:00.470 INFO  (qtp85415531-63-localhost-6) [c: s: r: x: t:localhost-6] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1746224040295} status=0 QTime=59
-2025-05-02 22:14:01.739 INFO  (qtp85415531-31-localhost-9) [c: s: r: x: t:localhost-9] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={} status=0 QTime=61
-2025-05-02 22:14:04.200 INFO  (qtp85415531-32-localhost-10) [c: s: r: x: t:localhost-10] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST} status=0 QTime=1
-2025-05-02 22:14:04.243 INFO  (qtp85415531-29-localhost-11) [c: s: r: x: t:localhost-11] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1746224040295} status=0 QTime=0
-2025-05-02 22:14:04.246 INFO  (qtp85415531-62-localhost-12) [c: s: r: x: t:localhost-12] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=CLUSTERSTATUS&wt=json&_=1746224040295} status=0 QTime=2
-2025-05-02 22:14:04.352 INFO  (qtp85415531-31-localhost-13) [c: s: r: x: t:localhost-13] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1746224040295} status=0 QTime=104
-2025-05-02 22:14:04.358 INFO  (qtp85415531-62-localhost-14) [c: s: r: x: t:localhost-14] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST&wt=json&_=1746224040295} status=0 QTime=0
-2025-05-02 22:14:04.373 INFO  (qtp85415531-31-localhost-15) [c: s: r: x: t:localhost-15] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LISTALIASES&wt=json&_=1746224040295} status=0 QTime=1
-2025-05-02 22:14:06.306 INFO  (qtp85415531-34-localhost-16) [c: s: r: x: t:localhost-16] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={} status=0 QTime=88
-2025-05-02 22:14:08.314 INFO  (qtp85415531-27-localhost-17) [c: s: r: x: t:localhost-17] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST} status=0 QTime=0
-2025-05-02 22:14:17.925 WARN  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.a.SystemInfoHandler Resolving canonical hostname for local host took 19.166 seconds, possible DNS misconfiguration. Set the 'solr.dns.prevent.reverse.lookup'  sysprop to true on startup to prevent future lookups if DNS can not be fixed.
-2025-05-02 22:14:18.075 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
-2025-05-02 22:14:18.096 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
-2025-05-02 22:14:18.096 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
-2025-05-02 22:14:18.105 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
-2025-05-02 22:14:18.106 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
-2025-05-02 22:14:18.171 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.r.ManagedResourceStorage Configured ZooKeeperStorageIO with znodeBase: /configs/_default
-2025-05-02 22:14:18.174 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.r.ManagedResourceStorage Loaded null at path _rest_managed.json using ZooKeeperStorageIO:path=/configs/_default
-2025-05-02 22:14:18.174 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.ZkIndexSchemaReader Creating ZooKeeper watch for the managed schema at /configs/_default/managed-schema.xml
-2025-05-02 22:14:18.175 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.ZkIndexSchemaReader Current schema version 0 is already the latest
-2025-05-02 22:14:18.183 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.DirectSolrSpellChecker init: {maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4, accuracy=0.5, maxQueryFrequency=0.01, name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal}
-2025-05-02 22:14:18.187 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
-2025-05-02 22:14:18.190 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2025-05-02 22:14:18.190 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2025-05-02 22:14:18.200 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
-2025-05-02 22:14:18.214 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContextBase make sure parent is created /collections/research-papers/leaders/shard1
-2025-05-02 22:14:18.222 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext Enough replicas found to continue.
-2025-05-02 22:14:18.223 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext I may be the new leader - try and sync
-2025-05-02 22:14:18.225 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy Sync replicas to http://localhost:8990/solr/research-papers_shard1_replica_n1/
-2025-05-02 22:14:18.225 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy Sync Success - now sync replicas to me
-2025-05-02 22:14:18.226 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy http://localhost:8990/solr/research-papers_shard1_replica_n1/ has no replicas
-2025-05-02 22:14:18.227 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContextBase Creating leader registration node /collections/research-papers/leaders/shard1/leader after winning as /collections/research-papers/leader_elect/shard1/election/72069977915195393-core_node2-n_0000000004
-2025-05-02 22:14:18.235 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext I am the new leader: http://localhost:8990/solr/research-papers_shard1_replica_n1/ shard1
-2025-05-02 22:14:18.237 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ZkController I am the leader, no recovery necessary
-2025-05-02 22:14:18.251 INFO  (zkCallback-11-thread-1) [c: s: r: x: t:] o.a.s.c.c.ZkStateReader A cluster state change: [WatchedEvent state:SyncConnected type:NodeDataChanged path:/collections/research-papers/state.json zxid: -1] for collection [research-papers] has occurred - updating... (live nodes size: [1])
-2025-05-02 22:14:19.355 INFO  (qtp85415531-63-localhost-24) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-24] o.a.s.c.S.Request webapp=/solr path=/schema/fields params={} status=0 QTime=3
-2025-05-02 22:14:21.364 INFO  (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.s.SchemaManager managed schema loaded . version : 0 
-2025-05-02 22:14:21.370 INFO  (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.s.IndexSchema Schema name=default-config
-2025-05-02 22:14:21.433 INFO  (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2025-05-02 22:14:21.511 ERROR (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'id' already exists.
+2025-05-03 14:39:10.857 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server jetty-10.0.19; built: 2023-12-15T20:38:32.477Z; git: 8492d1c78f122bb30cce20aecfa07e7283facd47; jvm 17.0.15+6
+2025-05-03 14:39:11.245 WARN  (main) [c: s: r: x: t:] o.e.j.u.DeprecationWarning Using @Deprecated Class org.eclipse.jetty.servlet.listener.ELContextCleaner
+2025-05-03 14:39:11.272 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2025-05-03 14:39:11.280 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider  ___      _       Welcome to Apache Solr™ version 9.5.0
+2025-05-03 14:39:11.281 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider / __| ___| |_ _   Starting in cloud mode on port 8990
+2025-05-03 14:39:11.281 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider \__ \/ _ \ | '_|  Install dir: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0
+2025-05-03 14:39:11.281 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider |___/\___/_|_|    Start time: 2025-05-03T14:39:11.281425500Z
+2025-05-03 14:39:11.283 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr started with "-XX:+CrashOnOutOfMemoryError" that will crash on any OutOfMemoryError exception. The cause of the OOME will be logged in the crash file at the following path: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\logs\jvm_crash_73336.log
+2025-05-03 14:39:11.321 INFO  (main) [c: s: r: x: t:] o.a.s.s.CoreContainerProvider Solr Home: C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr (source: system property: solr.solr.home)
+2025-05-03 14:39:11.356 WARN  (main) [c: s: r: x: t:] o.a.s.c.c.SolrZkClient Using default ZkCredentialsInjector. ZkCredentialsInjector is not secure, it creates an empty list of credentials which leads to 'OPEN_ACL_UNSAFE' ACLs to Zookeeper nodes
+2025-05-03 14:39:30.355 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Waiting up to 30000ms for client to connect to ZooKeeper
+2025-05-03 14:39:39.917 INFO  (zkConnectionManagerCallback-2-thread-1) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager zkClient has connected
+2025-05-03 14:39:39.917 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Client is connected to ZooKeeper
+2025-05-03 14:39:39.917 WARN  (main) [c: s: r: x: t:] o.a.s.c.c.SolrZkClient Using default ZkACLProvider. DefaultZkACLProvider is not secure, it creates 'OPEN_ACL_UNSAFE' ACLs to Zookeeper nodes
+2025-05-03 14:39:40.033 INFO  (main) [c: s: r: x: t:] o.a.s.c.NodeConfig Loading solr.xml from SolrHome (not found in ZooKeeper)
+2025-05-03 14:39:40.035 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrXmlConfig Loading solr.xml from C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\solr.xml
+2025-05-03 14:39:40.082 INFO  (main) [c: s: r: x: t:] o.a.s.c.SolrResourceLoader Added 1 libs to classloader, from paths: [/C:/Users/thoma/OneDrive/Documents/GitHub/IR-Semantic-Analysis-AI/Main/solr-9.5.0/lib]
+2025-05-03 14:39:40.785 INFO  (main) [c: s: r: x: t:] o.a.s.u.t.SimplePropagator Always-on trace id generation enabled.
+2025-05-03 14:39:41.022 WARN  (main) [c: s: r: x: t:] o.a.s.u.StartupLoggingUtils Jetty request logging enabled. Will retain logs for last 3 days. See chapter "Configuring Logging" in reference guide for how to configure.
+2025-05-03 14:39:41.023 INFO  (main) [c: s: r: x: t:] o.a.s.c.ZkContainer Zookeeper client=localhost:2181
+2025-05-03 14:39:41.031 INFO  (main) [c: s: r: x: t:] o.a.s.c.DistributedClusterStateUpdater Creating DistributedClusterStateUpdater with useDistributedStateUpdate=false. Solr will be using Overseer based cluster state updates.
+2025-05-03 14:39:41.042 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Waiting up to 15000ms for client to connect to ZooKeeper
+2025-05-03 14:39:50.507 INFO  (zkConnectionManagerCallback-12-thread-1) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager zkClient has connected
+2025-05-03 14:39:50.507 INFO  (main) [c: s: r: x: t:] o.a.s.c.c.ConnectionManager Client is connected to ZooKeeper
+2025-05-03 14:39:50.549 WARN  (main) [c: s: r: x: t:] o.a.s.c.ZkController Contents of zookeeper /security.json are world-readable; consider setting up ACLs as described in https://solr.apache.org/guide/solr/latest/deployment-guide/zookeeper-access-control.html
+2025-05-03 14:39:50.587 INFO  (main) [c: s: r: x: t:] o.a.s.c.DistributedClusterStateUpdater Creating DistributedClusterStateUpdater with useDistributedStateUpdate=false. Solr will be using Overseer based cluster state updates.
+2025-05-03 14:39:50.599 INFO  (main) [c: s: r: x: t:] o.a.s.c.OverseerElectionContext I am going to be the leader localhost:8990_solr
+2025-05-03 14:39:50.614 INFO  (main) [c: s: r: x: t:] o.a.s.c.Overseer Overseer (id=72073856271974401-localhost:8990_solr-n_0000000034) starting
+2025-05-03 14:39:50.696 INFO  (main) [c: s: r: x: t:] o.a.s.c.ZkController Register node as live in ZooKeeper:/live_nodes/localhost:8990_solr
+2025-05-03 14:39:50.696 INFO  (OverseerStateUpdate-72073856271974401-localhost:8990_solr-n_0000000034) [c: s: r: x: t:] o.a.s.c.Overseer Starting to work on the main queue : localhost:8990_solr
+2025-05-03 14:39:50.710 INFO  (zkCallback-11-thread-1) [c: s: r: x: t:] o.a.s.c.c.ZkStateReader Updated live nodes from ZooKeeper... (0) -> (1)
+2025-05-03 14:39:50.763 WARN  (main) [c: s: r: x: t:] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2025-05-03 14:40:09.942 WARN  (main) [c: s: r: x: t:] o.a.s.h.a.SystemInfoHandler Resolving canonical hostname for local host took 18.943 seconds, possible DNS misconfiguration. Set the 'solr.dns.prevent.reverse.lookup'  sysprop to true on startup to prevent future lookups if DNS can not be fixed.
+2025-05-03 14:40:10.126 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr
+2025-05-03 14:40:10.126 INFO  (main) [c: s: r: x: t:] o.a.s.c.CorePropertiesLocator Cores are: [research-papers_shard1_replica_n1]
+2025-05-03 14:40:10.164 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
+2025-05-03 14:40:10.234 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.s.IndexSchema Schema name=default-config
+2025-05-03 14:40:10.505 WARN  (main) [c: s: r: x: t:] o.g.j.m.i.MessagingBinders A class jakarta.activation.DataSource for a default provider MessageBodyWriter<jakarta.activation.DataSource> was not found. The provider is not available.
+2025-05-03 14:40:10.625 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c: s: r: x: t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2025-05-03 14:40:10.646 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrConfig Using Lucene MatchVersion: 9.9.0
+2025-05-03 14:40:10.649 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.IndexSchema Schema name=default-config
+2025-05-03 14:40:10.697 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2025-05-03 14:40:10.697 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.CoreContainer Creating SolrCore 'research-papers_shard1_replica_n1' using configuration from configset _default, trusted=true
+2025-05-03 14:40:10.765 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrCore Opening new SolrCore at [C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\research-papers_shard1_replica_n1], dataDir=[C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\solr\research-papers_shard1_replica_n1\data\]
+2025-05-03 14:40:11.215 INFO  (main) [c: s: r: x: t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2025-05-03 14:40:11.759 INFO  (main) [c: s: r: x: t:] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@2f40a43{solr-jetty-context.xml,/solr,file:///C:/Users/thoma/OneDrive/Documents/GitHub/IR-Semantic-Analysis-AI/Main/solr-9.5.0/server/solr-webapp/webapp/,AVAILABLE}{C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server/solr-webapp/webapp}
+2025-05-03 14:40:11.764 INFO  (main) [c: s: r: x: t:] o.e.j.s.RequestLogWriter Opened C:\Users\thoma\OneDrive\Documents\GitHub\IR-Semantic-Analysis-AI\Main\solr-9.5.0\server\logs\2025_05_03.request.log
+2025-05-03 14:40:11.772 INFO  (main) [c: s: r: x: t:] o.e.j.s.AbstractConnector Started ServerConnector@18f20260{HTTP/1.1, (http/1.1, h2c)}{127.0.0.1:8990}
+2025-05-03 14:40:11.773 INFO  (main) [c: s: r: x: t:] o.e.j.s.Server Started Server@1568159{STARTING}[10.0.19,sto=0] @67985ms
+2025-05-03 14:40:11.892 INFO  (qtp85415531-28-localhost-1) [c: s: r: x: t:localhost-1] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=javabin&version=2} status=0 QTime=35
+2025-05-03 14:40:11.927 INFO  (qtp85415531-59-localhost-2) [c: s: r: x: t:localhost-2] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=CLUSTERSTATUS&wt=javabin&version=2} status=0 QTime=11
+2025-05-03 14:40:13.053 INFO  (qtp85415531-62-localhost-4) [c: s: r: x: t:localhost-4] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1746283213024} status=0 QTime=0
+2025-05-03 14:40:13.118 INFO  (qtp85415531-65-localhost-5) [c: s: r: x: t:localhost-5] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1746283213024} status=0 QTime=54
+2025-05-03 14:40:13.129 INFO  (qtp85415531-62-localhost-7) [c: s: r: x: t:localhost-7] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST&wt=json&_=1746283213024} status=0 QTime=3
+2025-05-03 14:40:13.139 INFO  (qtp85415531-34-localhost-8) [c: s: r: x: t:localhost-8] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LISTALIASES&wt=json&_=1746283213024} status=0 QTime=1
+2025-05-03 14:40:13.184 INFO  (qtp85415531-30-localhost-6) [c: s: r: x: t:localhost-6] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1746283213024} status=0 QTime=61
+2025-05-03 14:40:14.085 INFO  (qtp85415531-27-localhost-9) [c: s: r: x: t:localhost-9] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={} status=0 QTime=41
+2025-05-03 14:40:16.564 INFO  (qtp85415531-59-localhost-10) [c: s: r: x: t:localhost-10] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST} status=0 QTime=0
+2025-05-03 14:40:18.624 INFO  (qtp85415531-31-localhost-11) [c: s: r: x: t:localhost-11] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={} status=0 QTime=44
+2025-05-03 14:40:20.630 INFO  (qtp85415531-65-localhost-12) [c: s: r: x: t:localhost-12] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/collections params={action=LIST} status=0 QTime=0
+2025-05-03 14:40:30.254 WARN  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.a.SystemInfoHandler Resolving canonical hostname for local host took 18.961 seconds, possible DNS misconfiguration. Set the 'solr.dns.prevent.reverse.lookup'  sysprop to true on startup to prevent future lookups if DNS can not be fixed.
+2025-05-03 14:40:30.431 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.j.SolrRequestAuthorizer Creating a new SolrRequestAuthorizer
+2025-05-03 14:40:30.457 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2025-05-03 14:40:30.458 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2025-05-03 14:40:30.468 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2025-05-03 14:40:30.468 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.u.CommitTracker Soft AutoCommit: if uncommitted for 3000ms; 
+2025-05-03 14:40:30.562 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.r.ManagedResourceStorage Configured ZooKeeperStorageIO with znodeBase: /configs/_default
+2025-05-03 14:40:30.563 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.r.ManagedResourceStorage Loaded null at path _rest_managed.json using ZooKeeperStorageIO:path=/configs/_default
+2025-05-03 14:40:30.564 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.ZkIndexSchemaReader Creating ZooKeeper watch for the managed schema at /configs/_default/managed-schema.xml
+2025-05-03 14:40:30.565 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.ZkIndexSchemaReader Current schema version 1 is already the latest
+2025-05-03 14:40:30.575 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.s.DirectSolrSpellChecker init: {accuracy=0.5, maxQueryFrequency=0.01, maxEdits=2, minPrefix=1, maxInspections=5, minQueryLength=4, name=default, field=_text_, classname=solr.DirectSolrSpellChecker, distanceMeasure=internal}
+2025-05-03 14:40:30.580 INFO  (coreLoadExecutor-20-thread-1-processing-localhost:8990_solr) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
+2025-05-03 14:40:30.584 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2025-05-03 14:40:30.584 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2025-05-03 14:40:30.591 INFO  (searcherExecutor-22-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SolrCore Registered new searcher autowarm time: 0 ms
+2025-05-03 14:40:30.601 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContextBase make sure parent is created /collections/research-papers/leaders/shard1
+2025-05-03 14:40:30.611 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext Enough replicas found to continue.
+2025-05-03 14:40:30.611 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext I may be the new leader - try and sync
+2025-05-03 14:40:30.613 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy Sync replicas to http://localhost:8990/solr/research-papers_shard1_replica_n1/
+2025-05-03 14:40:30.614 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy Sync Success - now sync replicas to me
+2025-05-03 14:40:30.614 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.SyncStrategy http://localhost:8990/solr/research-papers_shard1_replica_n1/ has no replicas
+2025-05-03 14:40:30.615 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContextBase Creating leader registration node /collections/research-papers/leaders/shard1/leader after winning as /collections/research-papers/leader_elect/shard1/election/72073856271974401-core_node2-n_0000000011
+2025-05-03 14:40:30.621 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ShardLeaderElectionContext I am the new leader: http://localhost:8990/solr/research-papers_shard1_replica_n1/ shard1
+2025-05-03 14:40:30.624 INFO  (coreZkRegister-3-thread-1-processing-localhost:8990_solr research-papers_shard1_replica_n1 research-papers shard1 core_node2) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:] o.a.s.c.ZkController I am the leader, no recovery necessary
+2025-05-03 14:40:31.676 INFO  (qtp85415531-62-localhost-19) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-19] o.a.s.c.S.Request webapp=/solr path=/schema/fields params={} status=0 QTime=3
+2025-05-03 14:40:33.685 INFO  (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager managed schema loaded . version : 1 
+2025-05-03 14:40:33.690 INFO  (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.IndexSchema Schema name=default-config
+2025-05-03 14:40:33.754 INFO  (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2025-05-03 14:40:33.765 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.ManagedIndexSchema Field type 'knn_vector' already exists.
+2025-05-03 14:40:33.766 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field type. => org.apache.solr.common.SolrException: Field type 'knn_vector' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newFieldType(ManagedIndexSchema.java:1382)
+org.apache.solr.common.SolrException: Field type 'knn_vector' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newFieldType(ManagedIndexSchema.java:1382) ~[?:?]
+	at org.apache.solr.schema.SchemaManager$OpType$1.perform(SchemaManager.java:215) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.performOperations(SchemaManager.java:95) ~[?:?]
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:90) ~[?:?]
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-05-03 14:40:33.766 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'title' already exists.
 	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313)
-org.apache.solr.common.SolrException: Field 'id' already exists.
+org.apache.solr.common.SolrException: Field 'title' already exists.
 	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313) ~[?:?]
 	at org.apache.solr.schema.SchemaManager$OpType$3.perform(SchemaManager.java:277) ~[?:?]
 	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
@@ -151,11 +205,257 @@ org.apache.solr.common.SolrException: Field 'id' already exists.
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
 	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
-2025-05-02 22:14:21.731 ERROR (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.h.RequestHandlerBase Client exception => org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{errorMessages=[Field 'id' already exists.
-], add-field={name=id, type=string, stored=true, required=true}}], 
+2025-05-03 14:40:33.767 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'author' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313)
+org.apache.solr.common.SolrException: Field 'author' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313) ~[?:?]
+	at org.apache.solr.schema.SchemaManager$OpType$3.perform(SchemaManager.java:277) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.performOperations(SchemaManager.java:95) ~[?:?]
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:90) ~[?:?]
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-05-03 14:40:33.767 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'text' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313)
+org.apache.solr.common.SolrException: Field 'text' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313) ~[?:?]
+	at org.apache.solr.schema.SchemaManager$OpType$3.perform(SchemaManager.java:277) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.performOperations(SchemaManager.java:95) ~[?:?]
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:90) ~[?:?]
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-05-03 14:40:33.767 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'abstract' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313)
+org.apache.solr.common.SolrException: Field 'abstract' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313) ~[?:?]
+	at org.apache.solr.schema.SchemaManager$OpType$3.perform(SchemaManager.java:277) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.performOperations(SchemaManager.java:95) ~[?:?]
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:90) ~[?:?]
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-05-03 14:40:33.767 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.s.SchemaManager Could not add field => org.apache.solr.common.SolrException: Field 'vector' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313)
+org.apache.solr.common.SolrException: Field 'vector' already exists.
+	at org.apache.solr.schema.ManagedIndexSchema.newField(ManagedIndexSchema.java:1313) ~[?:?]
+	at org.apache.solr.schema.SchemaManager$OpType$3.perform(SchemaManager.java:277) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.doOperations(SchemaManager.java:115) ~[?:?]
+	at org.apache.solr.schema.SchemaManager.performOperations(SchemaManager.java:95) ~[?:?]
+	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:90) ~[?:?]
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.executeCoreRequest(HttpSolrCall.java:875) ~[?:?]
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:561) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.dispatch(SolrDispatchFilter.java:262) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.lambda$doFilter$0(SolrDispatchFilter.java:219) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.traceHttpRequestExecution2(ServletUtils.java:249) ~[?:?]
+	at org.apache.solr.servlet.ServletUtils.rateLimitRequest(ServletUtils.java:215) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:213) ~[?:?]
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:195) ~[?:?]
+	at org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1635) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:527) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:598) ~[jetty-security-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1384) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1306) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.InetAccessHandler.handle(InetAccessHandler.java:228) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:141) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:301) ~[jetty-rewrite-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.gzip.GzipHandler.handle(GzipHandler.java:822) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.run(AdaptiveExecutionStrategy.java:199) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:411) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-05-03 14:40:33.767 ERROR (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.h.RequestHandlerBase Client exception => org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{errorMessages=[Field type 'knn_vector' already exists.
+], add-field-type={name=knn_vector, class=solr.DenseVectorField, vectorDimension=384, similarityFunction=cosine}}, {errorMessages=[Field 'title' already exists.
+], add-field={name=title, type=text_general, stored=true}}, {errorMessages=[Field 'author' already exists.
+], add-field={name=author, type=text_general, stored=true}}, {errorMessages=[Field 'text' already exists.
+], add-field={name=text, type=text_general, stored=true}}, {errorMessages=[Field 'abstract' already exists.
+], add-field={name=abstract, type=text_general, stored=true}}, {errorMessages=[Field 'vector' already exists.
+], add-field={name=vector, type=knn_vector, indexed=true, stored=false}}], 
 	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92)
-org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{errorMessages=[Field 'id' already exists.
-], add-field={name=id, type=string, stored=true, required=true}}], 
+org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, errors: [{errorMessages=[Field type 'knn_vector' already exists.
+], add-field-type={name=knn_vector, class=solr.DenseVectorField, vectorDimension=384, similarityFunction=cosine}}, {errorMessages=[Field 'title' already exists.
+], add-field={name=title, type=text_general, stored=true}}, {errorMessages=[Field 'author' already exists.
+], add-field={name=author, type=text_general, stored=true}}, {errorMessages=[Field 'text' already exists.
+], add-field={name=text, type=text_general, stored=true}}, {errorMessages=[Field 'abstract' already exists.
+], add-field={name=abstract, type=text_general, stored=true}}, {errorMessages=[Field 'vector' already exists.
+], add-field={name=vector, type=knn_vector, indexed=true, stored=false}}], 
 	at org.apache.solr.handler.SchemaHandler.handleRequestBody(SchemaHandler.java:92) ~[?:?]
 	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:226) ~[?:?]
 	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2884) ~[?:?]
@@ -208,4 +508,4 @@ org.apache.solr.api.ApiBag$ExceptionWithErrObject: error processing commands, er
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) ~[jetty-util-10.0.19.jar:10.0.19]
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) ~[jetty-util-10.0.19.jar:10.0.19]
 	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
-2025-05-02 22:14:21.731 INFO  (qtp85415531-64-localhost-25) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-25] o.a.s.c.S.Request webapp=/solr path=/schema params={} status=400 QTime=370
+2025-05-03 14:40:33.767 INFO  (qtp85415531-30-localhost-20) [c:research-papers s:shard1 r:core_node2 x:research-papers_shard1_replica_n1 t:localhost-20] o.a.s.c.S.Request webapp=/solr path=/schema params={} status=400 QTime=86
