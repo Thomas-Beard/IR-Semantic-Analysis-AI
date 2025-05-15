@@ -25,6 +25,6 @@ call bin\solr.cmd start -c -z localhost:%ZK_PORT% -p %SOLR_PORT%
 echo Waiting 20 seconds for Solr to initialize...
 timeout /t 20 >nul
 
-start http://localhost:%SOLR_PORT%/solr
+@REM start http://localhost:%SOLR_PORT%/solr
 
 endlocal
