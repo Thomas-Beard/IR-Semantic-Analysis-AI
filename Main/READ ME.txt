@@ -1,0 +1,39 @@
+ ---------------------------------------------
+|            Structure for READ ME:           |
+ ---------------------------------------------
+1. Important Information
+2. Product Directory Structure
+3. Installation Instructions
+4. Module Explanation
+5. AI Usage Introduction
+6. AI Usage Section
+
+
+ ----------------------------------------------
+|	         Important Information             |
+ ----------------------------------------------
+o It is vital that all requirements and dependencies are installed before running the product. (Please check Installation Instructions for further detail).
+
+o The product has only been tested on a Windows OS and therefore should only be ran on the same OS. 
+
+o Developer GitHub Version Control Link: https://github.com/Thomas-Beard/IR-Semantic-Analysis-AI
+
+
+ ----------------------------------------------
+|	       Product Directory Structure         |
+ ----------------------------------------------
+
+
+ --------------------------------------------------------
+|        Installation Instructions - Full Product        |
+ --------------------------------------------------------
+1. Install Java JDK 17 from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
+2. Extract the folder into the main directory and rename it to "jdk-17".
+3. Modifying environment variables:
+	3.1. Modify/Add the variables "JAVA_HOME" and change the value to the path for jdk-17
+	3.2. Open the Path Variable and add "%JAVA_HOME%\bin", then move it to the top of the list. 
+	3.3. Save and Apply the changes
+4. Install Solr 9.5.0 from: https://archive.apache.org/dist/solr/solr/
+5. Extract the folder into the main directory and rename it to "solr-9.5.0"
+6. Unzip standalone zookeeper and make sure it is in the same directory as Main.
+
