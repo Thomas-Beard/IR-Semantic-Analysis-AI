@@ -3,7 +3,7 @@
  ---------------------------------------------
 1. Important Information
 2. Product Directory Structure
-3. Installation Instructions
+3. Installation Instructions - Full Product
 4. Module Explanation
 
 
