@@ -2,7 +2,10 @@ CODE:
 - Change variable names for both python files
 - Commit these changes and the files to GitHub
 - Add and implement relevance list 
+- Add corresponding graphs for relevance list
 - Add example queries to the information tab, and reference it from the TREC GitHub
+- Add threading for accessibility of UI
+- Turn into .exe file
 - Finish READ ME for documentation & product package 
 
 DOCUMENTATION:
