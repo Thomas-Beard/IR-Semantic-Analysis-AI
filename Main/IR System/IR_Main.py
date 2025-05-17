@@ -21,13 +21,10 @@ SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
 BERT_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
 
-
-# Loading the queries from the TREC docs when app is initialised
 def load_queries(qry_file="cran.qry.xml"):
     queries = {}
     root = ET.parse(qry_file).getroot()
 
-    # Build relevance count lookup
     qrel_path = Path(__file__).resolve().parent / "cranqrel.trec.txt"
     rel_counts = {}
     with open(qrel_path, 'r') as f:
@@ -45,13 +42,12 @@ def load_queries(qry_file="cran.qry.xml"):
     return queries
 
 
-# Loading the relevance judgements for evaluation metric analysis
 def load_qrels(qrel_path):
     qrels = {}
     with open(qrel_path, 'r') as f:
         for line in f:
             qid, _, docid, rel = line.strip().split()
-            qid = qid.strip()  # ✨ ensure no space padding
+            qid = qid.strip() 
             if rel == '1':
                 qrels.setdefault(qid, set()).add(docid)
     return qrels
@@ -62,7 +58,6 @@ QRELS = load_qrels(QREL_PATH)
 
 
 def evaluate_results(retrieved_ids, relevant_ids, k=10):
-    # Normalize both retrieved and relevant IDs to plain strings without whitespace or type mismatches
     def normalize(ids):
         return set(str(int(str(doc).strip())) for doc in ids if str(doc).strip().isdigit())
 
@@ -148,54 +143,6 @@ class SearchThread(QThread):
         except Exception as e:
             self.error_capture.emit(str(e))
 
-# class GraphsTab(QWidget):
-#     def __init__(self):
-#         super().__init__()
-#         layout = QVBoxLayout()
-#         self.score_figure = Figure()
-#         self.score_canvas = FigureCanvas(self.score_figure)
-
-#         self.metric_figure = Figure()
-#         self.metric_canvas = FigureCanvas(self.metric_figure)
-
-#         layout.addWidget(self.score_canvas)
-#         layout.addWidget(self.metric_canvas)
-
-#         self.setLayout(layout)
-
-#     def plot_score_distribution(self, scores):
-#         self.score_figure.clear()
-#         ax = self.score_figure.add_subplot(111)
-#         ax.hist(scores, bins=10, color='skyblue', edgecolor='black')
-#         ax.set_title('Search Score Distribution')
-#         ax.set_xlabel('Relevance Score')
-#         ax.set_ylabel('Number of Documents')
-#         self.score_canvas.draw()
-
-
-#     def plot_metric_comparison(self, metrics):
-#         self.metric_figure.clear()
-#         ax = self.metric_figure.add_subplot(111)
-
-#         paradigms = list(metrics.keys())
-#         precision = [metrics[p]['P@10'] for p in paradigms]
-#         recall = [metrics[p]['Recall'] for p in paradigms]
-#         map_scores = [metrics[p]['MAP'] for p in paradigms]
-
-#         bar_width = 0.25
-#         x = np.arange(len(paradigms))
-
-#         ax.bar(x, precision, width=bar_width, label='Precision@10')
-#         ax.bar(x + bar_width, recall, width=bar_width, label='Recall')
-#         ax.bar(x + 2*bar_width, map_scores, width=bar_width, label='MAP')
-
-#         ax.set_title('Evaluation Metrics per Paradigm')
-#         ax.set_xticks(x + bar_width)
-#         ax.set_xticklabels(paradigms, rotation=15)
-#         ax.legend()
-#         self.metric_canvas.draw()
-
-
 class GraphsTab(QWidget):
     def __init__(self):
         super().__init__()
@@ -204,7 +151,6 @@ class GraphsTab(QWidget):
     def init_ui(self):
         layout = QVBoxLayout()
 
-        # Page navigation buttons
         self.switch_to_scores = QPushButton("Show Score Distribution")
         self.switch_to_metrics = QPushButton("Show Evaluation Metrics")
         self.switch_to_scores.clicked.connect(self.show_scores)
@@ -213,11 +159,9 @@ class GraphsTab(QWidget):
         layout.addWidget(self.switch_to_scores)
         layout.addWidget(self.switch_to_metrics)
 
-        # Stacked widget to hold pages
         self.page_stack = QStackedWidget()
         layout.addWidget(self.page_stack)
 
-        # ----- PAGE 1: Score Distribution -----
         self.score_page = QWidget()
         self.score_layout = QVBoxLayout(self.score_page)
         self.score_figure = Figure(figsize=(10, 6))
@@ -225,7 +169,6 @@ class GraphsTab(QWidget):
         self.score_layout.addWidget(self.score_canvas)
         self.page_stack.addWidget(self.score_page)
 
-        # ----- PAGE 2: Evaluation Metrics -----
         self.metric_page = QWidget()
         self.metric_layout = QVBoxLayout(self.metric_page)
         self.metric_figure, self.metric_ax = plt.subplots(figsize=(10, 6))
@@ -233,7 +176,6 @@ class GraphsTab(QWidget):
         self.metric_layout.addWidget(self.metric_canvas)
         self.page_stack.addWidget(self.metric_page)
 
-        # Set layout
         self.setLayout(layout)
         self.page_stack.setCurrentIndex(0)
 
@@ -278,7 +220,6 @@ class GraphsTab(QWidget):
         self.metric_ax.set_ylim(0, 1)
         self.metric_ax.legend()
 
-        # Add value annotations
         for bars in [bars1, bars2, bars3]:
             for bar in bars:
                 height = bar.get_height()
@@ -289,11 +230,6 @@ class GraphsTab(QWidget):
                                         ha='center', va='bottom')
 
         self.metric_canvas.draw()
-
-
-
-
-
 
 
 class SearchTab(QWidget):
@@ -413,7 +349,7 @@ class SearchTab(QWidget):
         query_id, raw_query_text = self.query_input.currentData()
         query_text = raw_query_text.replace("⭐", "").strip()
 
-        self.current_query_id = query_id  # Save for evaluation
+        self.current_query_id = query_id
         mode = self.search_mode.currentText()
 
         self.search_button.setEnabled(False)
