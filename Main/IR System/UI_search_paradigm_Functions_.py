@@ -3,9 +3,11 @@ import requests
 import subprocess
 import os
 import datetime
+import numpy as np
 from PyQt5.QtWidgets import (QTextEdit, QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QPushButton,QHBoxLayout, QTableWidget, QTableWidgetItem, QComboBox, 
-                             QHeaderView, QStatusBar, QMessageBox, QTabWidget)
+                             QHeaderView, QStatusBar, QMessageBox, QTabWidget, QScrollArea)
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from PyQt5.QtCore import QProcess
 from PyQt5.QtCore import QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -23,11 +25,66 @@ BERT_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
 def load_queries(qry_file="cran.qry.xml"):
     queries = {}
     root = ET.parse(qry_file).getroot()
+
+    # Build relevance count lookup
+    qrel_path = Path(__file__).resolve().parent / "cranqrel.trec.txt"
+    rel_counts = {}
+    with open(qrel_path, 'r') as f:
+        for line in f:
+            qid, _, _, rel = line.strip().split()
+            if rel == '1':
+                rel_counts[qid] = rel_counts.get(qid, 0) + 1
+
     for top in root.findall("top"):
         qid = top.findtext("num").strip()
         title = top.findtext("title").strip().replace('\n', ' ')
-        queries[qid] = title
+        count = rel_counts.get(qid, 0)
+        marker = "⭐" if count >= 10 else ""
+        queries[qid] = f"{marker} {title}"
     return queries
+
+
+# Loading the relevance judgements for evaluation metric analysis
+def load_qrels(qrel_path):
+    qrels = {}
+    with open(qrel_path, 'r') as f:
+        for line in f:
+            qid, _, docid, rel = line.strip().split()
+            qid = qid.strip()  # ✨ ensure no space padding
+            if rel == '1':
+                qrels.setdefault(qid, set()).add(docid)
+    return qrels
+
+
+QREL_PATH = str(Path(__file__).resolve().parent / "cranqrel.trec.txt")
+QRELS = load_qrels(QREL_PATH)
+
+
+def evaluate_results(retrieved_ids, relevant_ids, k=10):
+    # Normalize both retrieved and relevant IDs to plain strings without whitespace or type mismatches
+    def normalize(ids):
+        return set(str(int(str(doc).strip())) for doc in ids if str(doc).strip().isdigit())
+
+    retrieved_k = list(normalize(retrieved_ids))[:k]
+    retrieved_set = normalize(retrieved_ids)
+    relevant_set = normalize(relevant_ids)
+
+    true_positives = len(set(retrieved_k) & relevant_set)
+    precision = true_positives / k if k else 0
+    recall = len(retrieved_set & relevant_set) / len(relevant_set) if relevant_set else 0
+
+    ap = 0
+    hits = 0
+    for i, doc_id in enumerate(retrieved_ids):
+        doc_id_norm = str(int(str(doc_id).strip())) if str(doc_id).strip().isdigit() else None
+        if doc_id_norm and doc_id_norm in relevant_set:
+            hits += 1
+            ap += hits / (i + 1)
+
+    map_score = ap / len(relevant_set) if relevant_set else 0
+    return precision, recall, map_score
+
+
 
 class SearchThread(QThread):
     result_ready = pyqtSignal(list, str)
@@ -47,6 +104,7 @@ class SearchThread(QThread):
                     'rows': 50,
                     'wt': 'json'
                 }
+                self.query_params = params 
                 response = requests.get(SOLR_SELECT_URL, params=params)
             elif self.paradigm_mode == "Hybrid Paradigm (BM25 + Vector)":
                 vector = BERT_MODEL.encode(self.main_query).tolist()
@@ -59,6 +117,7 @@ class SearchThread(QThread):
                     'rq': '{!rerank reRankQuery=$rvec reRankDocs=100 reRankWeight=100.0}',
                     'rvec': f'{{!knn f=vector topK=100}}[{vec_str}]'
                 }
+                self.query_params = params 
                 response = requests.get(SOLR_SELECT_URL, params=params)
             elif self.paradigm_mode == "Semantic Paradigm (Vectors)":
                 vector = BERT_MODEL.encode(self.main_query)
@@ -75,7 +134,7 @@ class SearchThread(QThread):
                     'rows': 50,
                     'wt': 'json'
                 }
-
+                self.query_params = params 
                 response = requests.get(SOLR_SELECT_URL, params=params)
             else:
                 #response = requests.get(SOLR_SELECT_URL, params=params)
@@ -88,23 +147,139 @@ class SearchThread(QThread):
         except Exception as e:
             self.error_capture.emit(str(e))
 
+# class GraphsTab(QWidget):
+#     def __init__(self):
+#         super().__init__()
+#         layout = QVBoxLayout()
+#         self.score_figure = Figure()
+#         self.score_canvas = FigureCanvas(self.score_figure)
+
+#         self.metric_figure = Figure()
+#         self.metric_canvas = FigureCanvas(self.metric_figure)
+
+#         layout.addWidget(self.score_canvas)
+#         layout.addWidget(self.metric_canvas)
+
+#         self.setLayout(layout)
+
+#     def plot_score_distribution(self, scores):
+#         self.score_figure.clear()
+#         ax = self.score_figure.add_subplot(111)
+#         ax.hist(scores, bins=10, color='skyblue', edgecolor='black')
+#         ax.set_title('Search Score Distribution')
+#         ax.set_xlabel('Relevance Score')
+#         ax.set_ylabel('Number of Documents')
+#         self.score_canvas.draw()
+
+
+#     def plot_metric_comparison(self, metrics):
+#         self.metric_figure.clear()
+#         ax = self.metric_figure.add_subplot(111)
+
+#         paradigms = list(metrics.keys())
+#         precision = [metrics[p]['P@10'] for p in paradigms]
+#         recall = [metrics[p]['Recall'] for p in paradigms]
+#         map_scores = [metrics[p]['MAP'] for p in paradigms]
+
+#         bar_width = 0.25
+#         x = np.arange(len(paradigms))
+
+#         ax.bar(x, precision, width=bar_width, label='Precision@10')
+#         ax.bar(x + bar_width, recall, width=bar_width, label='Recall')
+#         ax.bar(x + 2*bar_width, map_scores, width=bar_width, label='MAP')
+
+#         ax.set_title('Evaluation Metrics per Paradigm')
+#         ax.set_xticks(x + bar_width)
+#         ax.set_xticklabels(paradigms, rotation=15)
+#         ax.legend()
+#         self.metric_canvas.draw()
+
+
 class GraphsTab(QWidget):
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
-        self.figure = Figure()
-        self.canvas = FigureCanvas(self.figure)
-        layout.addWidget(self.canvas)
-        self.setLayout(layout)
+
+        self.container = QWidget()
+        self.layout = QVBoxLayout(self.container)
+
+        # Score Distribution Chart
+        self.score_figure = Figure()
+        self.score_canvas = FigureCanvas(self.score_figure)
+        self.score_toolbar = NavigationToolbar(self.score_canvas, self)
+
+        # Evaluation Metrics Chart
+        self.metric_figure = Figure()
+        self.metric_canvas = FigureCanvas(self.metric_figure)
+        self.metric_toolbar = NavigationToolbar(self.metric_canvas, self)
+
+        # Add widgets to layout
+        self.layout.addWidget(QLabel("Search Score Distribution"))
+        self.layout.addWidget(self.score_toolbar)
+        self.layout.addWidget(self.score_canvas)
+        self.layout.addWidget(QLabel("Evaluation Metrics Comparison"))
+        self.layout.addWidget(self.metric_toolbar)
+        self.layout.addWidget(self.metric_canvas)
+
+        # Scroll area to wrap layout
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setWidget(self.container)
+
+        outer_layout = QVBoxLayout()
+        outer_layout.addWidget(scroll)
+        self.setLayout(outer_layout)
 
     def plot_score_distribution(self, scores):
-        self.figure.clear()
-        ax = self.figure.add_subplot(111)
+        self.score_figure.clear()
+        ax = self.score_figure.add_subplot(111)
         ax.hist(scores, bins=10, color='skyblue', edgecolor='black')
         ax.set_title('Search Score Distribution')
         ax.set_xlabel('Relevance Score')
         ax.set_ylabel('Number of Documents')
-        self.canvas.draw()
+        self.score_canvas.draw()
+
+    def plot_metric_comparison(self, metrics):
+        self.metric_figure.clear()
+        ax = self.metric_figure.add_subplot(111)
+
+        if not metrics:
+            ax.set_title("No evaluation metrics to display.")
+            self.metric_canvas.draw()
+            return
+
+        paradigms = list(metrics.keys())
+        precision = [metrics[p].get('P@10', 0) for p in paradigms]
+        recall = [metrics[p].get('Recall', 0) for p in paradigms]
+        map_scores = [metrics[p].get('MAP', 0) for p in paradigms]
+
+        print("[DEBUG] Evaluation metrics:", metrics)
+        print("[DEBUG] Paradigms:", paradigms)
+        print("[DEBUG] Precision:", precision)
+        print("[DEBUG] Recall:", recall)
+        print("[DEBUG] MAP:", map_scores)
+
+        if not any(precision + recall + map_scores):
+            ax.set_title("No non-zero metrics available to plot.")
+            self.metric_canvas.draw()
+            return
+
+        bar_width = 0.25
+        x = np.arange(len(paradigms))
+
+        ax.bar(x, precision, width=bar_width, label='Precision@10')
+        ax.bar(x + bar_width, recall, width=bar_width, label='Recall')
+        ax.bar(x + 2 * bar_width, map_scores, width=bar_width, label='MAP')
+
+        ax.set_title('Evaluation Metrics per Paradigm')
+        ax.set_xticks(x + bar_width)
+        ax.set_xticklabels(paradigms, rotation=15)
+        ax.set_ylim(0, 1)
+        ax.legend()
+        self.metric_canvas.draw()
+
+
+
+
 
 
 class SearchTab(QWidget):
@@ -164,12 +339,66 @@ class SearchTab(QWidget):
         self.setLayout(layout)
         self.doc_abstracts = {}
 
+    def evaluate_all_paradigms(self, query_id, query_text):
+        relevant_docs = QRELS.get(str(query_id).strip(), set())
+        metrics = {}
+
+        for mode in ["BM25 Paradigm", "Semantic Paradigm (Vectors)", "Hybrid Paradigm (BM25 + Vector)"]:
+            if mode == "BM25 Paradigm":
+                params = {
+                    'q': f'title:{query_text} OR abstract:{query_text} OR text:{query_text} OR author:{query_text}',
+                    'fl': 'id,title,score,abstract',
+                    'rows': 50,
+                    'wt': 'json'
+                }
+            elif mode == "Semantic Paradigm (Vectors)":
+                vector = BERT_MODEL.encode(query_text).tolist()
+                vec_str = ','.join([str(round(x, 6)) for x in vector])
+                params = {
+                    'q': f'{{!knn f=vector topK=50}}[{vec_str}]',
+                    'fl': 'id,title,score,abstract',
+                    'rows': 50,
+                    'wt': 'json'
+                }
+            elif mode == "Hybrid Paradigm (BM25 + Vector)":
+                vector = BERT_MODEL.encode(query_text).tolist()
+                vec_str = ','.join([str(round(x, 6)) for x in vector])
+                params = {
+                    'q': f'title:{query_text} OR abstract:{query_text} OR text:{query_text} OR author:{query_text}',
+                    'fl': 'id,title,score,abstract',
+                    'rows': 50,
+                    'wt': 'json',
+                    'rq': '{!rerank reRankQuery=$rvec reRankDocs=100 reRankWeight=100.0}',
+                    'rvec': f'{{!knn f=vector topK=100}}[{vec_str}]'
+                }
+
+            try:
+                response = requests.get(SOLR_SELECT_URL, params=params)
+                response.raise_for_status()
+                docs = response.json()['response']['docs']
+                doc_ids = [doc.get('id', '') for doc in docs]
+                p, r, m = evaluate_results(doc_ids, relevant_docs, k=50)
+                metrics[mode] = {'P@10': p, 'Recall': r, 'MAP': m}
+            except Exception as e:
+                metrics[mode] = {'P@10': 0, 'Recall': 0, 'MAP': 0}
+                print(f"[DEBUG] Error evaluating {mode}: {e}")
+
+        self.graphs_tab.plot_metric_comparison(metrics)
+        print("[DEBUG] Available qrel keys (sample):", sorted(QRELS.keys())[:10])
+        print("[DEBUG] Total queries with qrels:", len(QRELS))
+
+        print("[DEBUG] Using query_id:", query_id)
+
+
+
     def run_search(self):
         if self.query_input.currentIndex() == -1:
             self.status_bar.showMessage('Please select a query.')
             return
 
-        query_id, query_text = self.query_input.currentData()
+        query_id, raw_query_text = self.query_input.currentData()
+        query_text = raw_query_text.replace("⭐", "").strip()
+
         self.current_query_id = query_id  # Save for evaluation
         mode = self.search_mode.currentText()
 
@@ -180,6 +409,10 @@ class SearchTab(QWidget):
         self.search_thread.result_ready.connect(self.display_results)
         self.search_thread.error_capture.connect(self.handle_error)
         self.search_thread.start()
+        self.evaluate_all_paradigms(query_id, query_text)
+
+
+
 
     def display_results(self, docs, mode_label):
         self.results_table.setRowCount(len(docs))
@@ -187,6 +420,9 @@ class SearchTab(QWidget):
         # self.results_table.resizeColumnsToContents()
 
         self.doc_abstracts = {}
+
+        for doc in docs[:5]:
+            print("[DEBUG] Returned ID:", doc.get("id"))
 
         for row, doc in enumerate(docs):
             doc_id = doc.get('id', 'N/A')
