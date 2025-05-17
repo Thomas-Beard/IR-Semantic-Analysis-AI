@@ -46,6 +46,8 @@ o The TREC collection, relevance assessments and queries provided by: https://gi
  --------------------------------------------------------
 |        Installation Instructions - Full Product        |
  --------------------------------------------------------
+Please note that these dependencies are required even when running main.exe. They must be installed and configured before using the application.
+
 1. Install Java JDK 17 from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
 2. Extract the folder into the main root directory and rename it to "jdk-17". (See product directory structure for guidance)
 3. Modifying environment variables:
