@@ -18,10 +18,29 @@ o The product has only been tested on a Windows OS and therefore should only be 
 
 o The pre-trained model the semantic and hybrid paradigm in the main system uses, is from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 
+o The TREC collection, relevance assessments and queries provided by: https://github.com/oussbenk/cranfield-trec-dataset/tree/main
+
 
  ----------------------------------------------
 |	       Product Directory Structure         |
  ----------------------------------------------
+				Main/
+				├── IR System/
+				│   ├── collection_updates.py
+				│   ├── UI_search_paradigm_Functions_.py
+				│   ├── cran.all.1400.xml	  [Provided by... located in Important Information]
+				│   ├── cran.qry.xml	      [Provided by... located in Important Information]
+				│   └── cranqrel.trec.txt	  [Provided by... located in Important Information]
+				|
+				├── jdk-17/         [Read Installation Instructions]
+				|
+				├── solr-9.5.0/		[Read Installation Instructions]
+				|
+				├── zookeeper/		[Will be a .zip file, please read Installation Instructions]
+				|
+				├── READ ME.txt
+				├── requirements.txt
+				└── temp.bat
 
 
  --------------------------------------------------------
@@ -38,3 +57,7 @@ o The pre-trained model the semantic and hybrid paradigm in the main system uses
 6. Unzip standalone zookeeper and make sure it is in the same directory as Main. (See product directory structure for guidance)
 7. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
 
+ -------------------------------------
+|	       Module Explanation         |
+ -------------------------------------
+ 
