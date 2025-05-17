@@ -1,11 +1,5 @@
 CODE:
-- Change variable names for both python files
-- Commit these changes and the files to GitHub
-- Add and implement relevance list & query list
-- Add corresponding graphs for precision, recall, MAP
-- Add explanation about selectable queries and how it works with the search paradigms, and reference the Relevance Judgement & Queries from the TREC GitHub
 - Add explanation that once a selected query is ran, all search paradigms will run and produce evaluation metrics on the graphs tab but the selected search paradigm will display its own results on the search tab 
-- Add threading for accessibility of UI
 - Turn into .exe file
 - Finish READ ME for documentation & product package 
 
