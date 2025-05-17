@@ -3,9 +3,14 @@ import time
 from pathlib import Path
 import requests
 import xml.etree.ElementTree as ET
+from sentence_transformers import SentenceTransformer
+
 
 SOLR_URL = "http://localhost:8990/solr"
 COLLECTION_NAME = "research-papers"
+
+bert_model = SentenceTransformer('all-MiniLM-L6-v2')
+
 
 
 def check_collection_exists():
@@ -141,12 +146,16 @@ def upload_documents(xml_path):
 
         docs = []
         for doc in root.findall("doc"):
+            text = doc.findtext("text", "").strip()
+            abstract = " ".join(text.split()[:50])
+            embedding = bert_model.encode(text).tolist()
             docs.append({
                 "id": doc.findtext("docno", "").strip(),
                 "title": doc.findtext("title", "").strip(),
                 "author": doc.findtext("author", "").strip(),
                 "text": doc.findtext("text", "").strip(),
-                "abstract": " ".join(doc.findtext("text", "").strip().split()[:50])
+                "abstract": " ".join(doc.findtext("text", "").strip().split()[:50]),
+                "vector": embedding  # Added vectors field for semantic search
             })
 
         update_url = f"{SOLR_URL}/{COLLECTION_NAME}/update?commit=true"
