@@ -15,6 +15,7 @@ from matplotlib.figure import Figure
 from sentence_transformers import SentenceTransformer
 from xml.etree import ElementTree as ET
 from pathlib import Path
+from PyQt5.QtWidgets import QScrollArea
 
 SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
@@ -115,7 +116,7 @@ class SearchTab(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        layout = QHBoxLayout()
+        layout = QVBoxLayout()
         button_panel = QVBoxLayout()
         info_panel = QVBoxLayout()
 
@@ -131,7 +132,7 @@ class SearchTab(QWidget):
         self.query_dict = load_queries(xml_path)
         self.query_input = QComboBox()
         for qid, qtext in self.query_dict.items():
-            display_text = f"{qid}: {qtext[:100].strip()}..."  # limit long titles
+            display_text = f"{qid}: {qtext.strip()}"
             self.query_input.addItem(display_text, userData=(qid, qtext))
         layout.addWidget(self.query_input)
 
@@ -148,8 +149,16 @@ class SearchTab(QWidget):
         self.results_table.setColumnCount(3)
         self.results_table.setHorizontalHeaderLabels(['ID', 'Title', 'Score'])
         self.results_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.results_table.setColumnWidth(0, 80)
+        self.results_table.setColumnWidth(2, 80)
+
         self.results_table.cellDoubleClicked.connect(self.show_abstract)
+
+        # layout.addWidget(self.results_table, stretch=1)
         layout.addWidget(self.results_table)
+        layout.setStretchFactor(self.results_table, 2)
+
+
 
         layout.addLayout(button_panel)
         layout.addLayout(info_panel)
@@ -190,6 +199,9 @@ class SearchTab(QWidget):
 
     def display_results(self, docs, mode_label):
         self.results_table.setRowCount(len(docs))
+        self.results_table.resizeRowsToContents()
+        # self.results_table.resizeColumnsToContents()
+
         self.doc_abstracts = {}
 
         for row, doc in enumerate(docs):
@@ -244,7 +256,7 @@ class SolrProcessWidget(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        layout = QHBoxLayout()
+        layout = QVBoxLayout()
 
         button_panel = QVBoxLayout()
         info_panel = QVBoxLayout()
@@ -401,9 +413,12 @@ class MainWindow(QWidget):
 
     def init_ui(self):
         self.setWindowTitle('Semantic IR System')
-        self.resize(1100, 700)
+        self.resize(900, 600)
+        self.setMinimumSize(900, 600)
 
-        layout = QVBoxLayout()
+
+
+        layout = QHBoxLayout()
 
         self.tabs = QTabWidget()
 
@@ -417,10 +432,15 @@ class MainWindow(QWidget):
         self.tabs.addTab(self.search_tab, "Search")
         self.tabs.addTab(self.graphs_tab, "Graphs")
 
-        layout.addWidget(self.tabs)
-        layout.addWidget(self.status_bar)
+        # layout.addWidget(self.tabs)
+        # layout.addWidget(self.status_bar)
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(self.tabs)
+        main_layout.addWidget(self.status_bar)
+        self.setLayout(main_layout)
 
-        self.setLayout(layout)
+
+        # self.setLayout(layout)
 
 
 if __name__ == '__main__':
