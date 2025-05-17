@@ -1,4 +1,5 @@
 matplotlib==3.10.3
+numpy==2.2.6
 PyQt5==5.15.11
 PyQt5_sip==12.17.0
 Requests==2.32.3
