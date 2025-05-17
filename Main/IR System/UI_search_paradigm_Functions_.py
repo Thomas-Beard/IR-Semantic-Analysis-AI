@@ -6,15 +6,16 @@ import datetime
 import numpy as np
 from PyQt5.QtWidgets import (QTextEdit, QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QPushButton,QHBoxLayout, QTableWidget, QTableWidgetItem, QComboBox, 
-                             QHeaderView, QStatusBar, QMessageBox, QTabWidget, QScrollArea)
+                             QHeaderView, QStatusBar, QMessageBox, QTabWidget, QScrollArea, QStackedWidget)
+from PyQt5.QtCore import QProcess, QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-from PyQt5.QtCore import QProcess
-from PyQt5.QtCore import QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
 from sentence_transformers import SentenceTransformer
 from xml.etree import ElementTree as ET
 from pathlib import Path
+
 
 SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
@@ -198,36 +199,49 @@ class SearchThread(QThread):
 class GraphsTab(QWidget):
     def __init__(self):
         super().__init__()
+        self.init_ui()
 
-        self.container = QWidget()
-        self.layout = QVBoxLayout(self.container)
+    def init_ui(self):
+        layout = QVBoxLayout()
 
-        # Score Distribution Chart
-        self.score_figure = Figure()
+        # Page navigation buttons
+        self.switch_to_scores = QPushButton("Show Score Distribution")
+        self.switch_to_metrics = QPushButton("Show Evaluation Metrics")
+        self.switch_to_scores.clicked.connect(self.show_scores)
+        self.switch_to_metrics.clicked.connect(self.show_metrics)
+
+        layout.addWidget(self.switch_to_scores)
+        layout.addWidget(self.switch_to_metrics)
+
+        # Stacked widget to hold pages
+        self.page_stack = QStackedWidget()
+        layout.addWidget(self.page_stack)
+
+        # ----- PAGE 1: Score Distribution -----
+        self.score_page = QWidget()
+        self.score_layout = QVBoxLayout(self.score_page)
+        self.score_figure = Figure(figsize=(10, 6))
         self.score_canvas = FigureCanvas(self.score_figure)
-        self.score_toolbar = NavigationToolbar(self.score_canvas, self)
+        self.score_layout.addWidget(self.score_canvas)
+        self.page_stack.addWidget(self.score_page)
 
-        # Evaluation Metrics Chart
-        self.metric_figure = Figure()
+        # ----- PAGE 2: Evaluation Metrics -----
+        self.metric_page = QWidget()
+        self.metric_layout = QVBoxLayout(self.metric_page)
+        self.metric_figure, self.metric_ax = plt.subplots(figsize=(10, 6))
         self.metric_canvas = FigureCanvas(self.metric_figure)
-        self.metric_toolbar = NavigationToolbar(self.metric_canvas, self)
+        self.metric_layout.addWidget(self.metric_canvas)
+        self.page_stack.addWidget(self.metric_page)
 
-        # Add widgets to layout
-        self.layout.addWidget(QLabel("Search Score Distribution"))
-        self.layout.addWidget(self.score_toolbar)
-        self.layout.addWidget(self.score_canvas)
-        self.layout.addWidget(QLabel("Evaluation Metrics Comparison"))
-        self.layout.addWidget(self.metric_toolbar)
-        self.layout.addWidget(self.metric_canvas)
+        # Set layout
+        self.setLayout(layout)
+        self.page_stack.setCurrentIndex(0)
 
-        # Scroll area to wrap layout
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-        scroll.setWidget(self.container)
+    def show_scores(self):
+        self.page_stack.setCurrentIndex(0)
 
-        outer_layout = QVBoxLayout()
-        outer_layout.addWidget(scroll)
-        self.setLayout(outer_layout)
+    def show_metrics(self):
+        self.page_stack.setCurrentIndex(1)
 
     def plot_score_distribution(self, scores):
         self.score_figure.clear()
@@ -239,43 +253,43 @@ class GraphsTab(QWidget):
         self.score_canvas.draw()
 
     def plot_metric_comparison(self, metrics):
-        self.metric_figure.clear()
-        ax = self.metric_figure.add_subplot(111)
-
-        if not metrics:
-            ax.set_title("No evaluation metrics to display.")
-            self.metric_canvas.draw()
-            return
+        self.metric_ax.clear()
 
         paradigms = list(metrics.keys())
         precision = [metrics[p].get('P@10', 0) for p in paradigms]
         recall = [metrics[p].get('Recall', 0) for p in paradigms]
         map_scores = [metrics[p].get('MAP', 0) for p in paradigms]
 
-        print("[DEBUG] Evaluation metrics:", metrics)
-        print("[DEBUG] Paradigms:", paradigms)
-        print("[DEBUG] Precision:", precision)
-        print("[DEBUG] Recall:", recall)
-        print("[DEBUG] MAP:", map_scores)
-
         if not any(precision + recall + map_scores):
-            ax.set_title("No non-zero metrics available to plot.")
+            self.metric_ax.set_title("No non-zero metrics to display.")
             self.metric_canvas.draw()
             return
 
         bar_width = 0.25
         x = np.arange(len(paradigms))
 
-        ax.bar(x, precision, width=bar_width, label='Precision@10')
-        ax.bar(x + bar_width, recall, width=bar_width, label='Recall')
-        ax.bar(x + 2 * bar_width, map_scores, width=bar_width, label='MAP')
+        bars1 = self.metric_ax.bar(x, precision, width=bar_width, label='Precision@50')
+        bars2 = self.metric_ax.bar(x + bar_width, recall, width=bar_width, label='Recall')
+        bars3 = self.metric_ax.bar(x + 2 * bar_width, map_scores, width=bar_width, label='MAP')
 
-        ax.set_title('Evaluation Metrics per Paradigm')
-        ax.set_xticks(x + bar_width)
-        ax.set_xticklabels(paradigms, rotation=15)
-        ax.set_ylim(0, 1)
-        ax.legend()
+        self.metric_ax.set_title('Evaluation Metrics per Paradigm')
+        self.metric_ax.set_xticks(x + bar_width)
+        self.metric_ax.set_xticklabels(paradigms, rotation=15)
+        self.metric_ax.set_ylim(0, 1)
+        self.metric_ax.legend()
+
+        # Add value annotations
+        for bars in [bars1, bars2, bars3]:
+            for bar in bars:
+                height = bar.get_height()
+                self.metric_ax.annotate(f"{height:.2f}",
+                                        xy=(bar.get_x() + bar.get_width() / 2, height),
+                                        xytext=(0, 3),
+                                        textcoords="offset points",
+                                        ha='center', va='bottom')
+
         self.metric_canvas.draw()
+
 
 
 
@@ -600,7 +614,10 @@ class InfoTab(QWidget):
         Furthermore, users such as researchers and students (both a common beneficiary searching for research papers) can use this product to find the most relatable paper for their research. 
         
         A surprising result was found during the development of this product, where the semantic paradigm (utilising a BERT model trained and tested for IR systems) often produced more accurate results compared to the hybrid and BM25 paradigms respectfully. This can be viewed in the Graphs tab when comparing evaluation metrics.
+        Queries marked with a "⭐" have the most relevant documents according to relevance judgement document "cranqrel.trex.txt". 
         </p>
+        
+        <p>TREC Collection, Relevance Judgement and Fixed Queries utilised from: https://github.com/oussbenk/cranfield-trec-dataset/tree/main</p>
         
         <h3>Limitations:</h3>
         <ul>
