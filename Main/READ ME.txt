@@ -10,6 +10,8 @@
  ----------------------------------------------
 |	         Important Information             |
  ----------------------------------------------
+o The system only currently works with the exact dependencies installed listed in the Installation Instructions. (Please check Installation Instructions for further detail).
+
 o It is vital that all requirements and dependencies are installed before running the product. (Please check Installation Instructions for further detail).
 
 o The product has only been tested on a Windows OS and therefore should only be ran on the same OS. 
@@ -34,4 +36,5 @@ o The pre-trained model the semantic and hybrid paradigm in the main system uses
 4. Install Solr 9.5.0 from: https://archive.apache.org/dist/solr/solr/
 5. Extract the folder into the main root directory and rename it to "solr-9.5.0" (See directory structure for guidance)
 6. Unzip standalone zookeeper and make sure it is in the same directory as Main. (See directory structure for guidance)
+7. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
 
