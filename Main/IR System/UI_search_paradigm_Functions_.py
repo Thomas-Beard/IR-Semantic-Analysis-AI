@@ -13,10 +13,21 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from sentence_transformers import SentenceTransformer
+from xml.etree import ElementTree as ET
+from pathlib import Path
 
 SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
 BERT_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
+
+def load_queries(qry_file="cran.qry.xml"):
+    queries = {}
+    root = ET.parse(qry_file).getroot()
+    for top in root.findall("top"):
+        qid = top.findtext("num").strip()
+        title = top.findtext("title").strip().replace('\n', ' ')
+        queries[qid] = title
+    return queries
 
 class SearchThread(QThread):
     result_ready = pyqtSignal(list, str)
@@ -108,11 +119,22 @@ class SearchTab(QWidget):
         button_panel = QVBoxLayout()
         info_panel = QVBoxLayout()
 
-        self.label = QLabel('Enter your search query:')
-        layout.addWidget(self.label)
+        # self.label = QLabel('Enter your search query:')
+        # layout.addWidget(self.label)
 
-        self.query_input = QLineEdit()
+        # self.query_input = QLineEdit()
+        # layout.addWidget(self.query_input)
+
+        self.label = QLabel('Select Query:')
+        layout.addWidget(self.label)
+        xml_path = str(Path(__file__).resolve().parent / "cran.qry.xml")
+        self.query_dict = load_queries(xml_path)
+        self.query_input = QComboBox()
+        for qid, qtext in self.query_dict.items():
+            display_text = f"{qid}: {qtext[:100].strip()}..."  # limit long titles
+            self.query_input.addItem(display_text, userData=(qid, qtext))
         layout.addWidget(self.query_input)
+
 
         self.search_mode = QComboBox()
         self.search_mode.addItems(["BM25 Paradigm", "Semantic Paradigm (Vectors)", "Hybrid Paradigm (BM25 + Vector)"])
@@ -135,20 +157,36 @@ class SearchTab(QWidget):
         self.doc_abstracts = {}
 
     def run_search(self):
-        query = self.query_input.text().strip()
-        mode = self.search_mode.currentText()
-
-        if not query:
-            self.status_bar.showMessage('Please enter a search query.')
+        if self.query_input.currentIndex() == -1:
+            self.status_bar.showMessage('Please select a query.')
             return
 
-        self.search_button.setEnabled(False)
-        self.status_bar.showMessage('Searching...')
+        query_id, query_text = self.query_input.currentData()
+        self.current_query_id = query_id  # Save for evaluation
+        mode = self.search_mode.currentText()
 
-        self.search_thread = SearchThread(query, mode)
+        self.search_button.setEnabled(False)
+        self.status_bar.showMessage(f'Searching for Query #{query_id}...')
+
+        self.search_thread = SearchThread(query_text, mode)
         self.search_thread.result_ready.connect(self.display_results)
         self.search_thread.error_capture.connect(self.handle_error)
         self.search_thread.start()
+
+        # query = self.query_input.text().strip()
+        # mode = self.search_mode.currentText()
+
+        # if not query:
+        #     self.status_bar.showMessage('Please enter a search query.')
+        #     return
+
+        # self.search_button.setEnabled(False)
+        # self.status_bar.showMessage('Searching...')
+
+        # self.search_thread = SearchThread(query, mode)
+        # self.search_thread.result_ready.connect(self.display_results)
+        # self.search_thread.error_capture.connect(self.handle_error)
+        # self.search_thread.start()
 
     def display_results(self, docs, mode_label):
         self.results_table.setRowCount(len(docs))
