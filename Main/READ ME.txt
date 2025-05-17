@@ -56,8 +56,9 @@ o The TREC collection, relevance assessments and queries provided by: https://gi
 5. Extract the folder into the main root directory and rename it to "solr-9.5.0" (See product directory structure for guidance)
 6. Unzip standalone zookeeper and make sure it is in the same directory as Main. (See product directory structure for guidance)
 7. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
+8. Run main.exe and happy searching
+
 
  -------------------------------------
 |	       Module Explanation         |
  -------------------------------------
- 
