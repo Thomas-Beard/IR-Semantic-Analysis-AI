@@ -231,7 +231,6 @@ class GraphsTab(QWidget):
 
         self.metric_canvas.draw()
 
-
 class SearchTab(QWidget):
     def __init__(self, status_bar, graphs_tab):
         super().__init__()
