@@ -21,6 +21,8 @@ SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
 BERT_MODEL = SentenceTransformer('all-MiniLM-L6-v2')
 
+
+# Loading the queries from the TREC docs when app is initialised
 def load_queries(qry_file="cran.qry.xml"):
     queries = {}
     root = ET.parse(qry_file).getroot()
@@ -181,21 +183,6 @@ class SearchTab(QWidget):
         self.search_thread.result_ready.connect(self.display_results)
         self.search_thread.error_capture.connect(self.handle_error)
         self.search_thread.start()
-
-        # query = self.query_input.text().strip()
-        # mode = self.search_mode.currentText()
-
-        # if not query:
-        #     self.status_bar.showMessage('Please enter a search query.')
-        #     return
-
-        # self.search_button.setEnabled(False)
-        # self.status_bar.showMessage('Searching...')
-
-        # self.search_thread = SearchThread(query, mode)
-        # self.search_thread.result_ready.connect(self.display_results)
-        # self.search_thread.error_capture.connect(self.handle_error)
-        # self.search_thread.start()
 
     def display_results(self, docs, mode_label):
         self.results_table.setRowCount(len(docs))
@@ -416,10 +403,7 @@ class MainWindow(QWidget):
         self.resize(900, 600)
         self.setMinimumSize(900, 600)
 
-
-
-        layout = QHBoxLayout()
-
+        # layout = QHBoxLayout()
         self.tabs = QTabWidget()
 
         self.status_bar = QStatusBar()
@@ -432,16 +416,10 @@ class MainWindow(QWidget):
         self.tabs.addTab(self.search_tab, "Search")
         self.tabs.addTab(self.graphs_tab, "Graphs")
 
-        # layout.addWidget(self.tabs)
-        # layout.addWidget(self.status_bar)
         main_layout = QVBoxLayout()
         main_layout.addWidget(self.tabs)
         main_layout.addWidget(self.status_bar)
         self.setLayout(main_layout)
-
-
-        # self.setLayout(layout)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
