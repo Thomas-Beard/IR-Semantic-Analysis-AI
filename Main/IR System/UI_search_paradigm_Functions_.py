@@ -356,15 +356,22 @@ class InfoTab(QWidget):
         info_text.setHtml("""
         <h2>Welcome to the Semantic IR System</h2>
 
-        <h3>Purpose</h3>
+        <h3>Purpose:</h3>
         <p>
         This software allows users to explore and compare traditional and modern information retrieval paradigms.
         It supports fixed query search using BM25, semantic search using vector embeddings, and a hybrid approach combining both.
         The goal is to visualize search results, analyze scoring behavior, examine how relevance shifts across query types and search paradigms.
         Furthermore, users such as researchers and students (both a common beneficiary searching for research papers) can use this product to find the most relatable paper for their research. 
-        However, due to the main limitation where the collection only contains 1,400 documents of topics available; Aerodynamics, Thermal analysis, Structual mechanics, Hypersonic flight & Gas dynamics.
-        This means the product will only return a max amount of search results (i.e. 50 results max) & only the papers related to the topics in the collection which means the data provided may not be 100% accurate, but can still be reliable for analysis & finding a specific research papers for the users.
+        
+        A surprising result was found during the development of this product, where the semantic paradigm (utilising a BERT model trained and tested for IR systems) often produced more accurate results compared to the hybrid and BM25 paradigms respectfully. This can be viewed in the Graphs tab when comparing evaluation metrics.
         </p>
+        
+        <h3>Limitations:</h3>
+        <ul>
+            <li>The cranfield TREC collection only contains 1,400 documents, which results in the data provided for analysis to not be 100% accurate, but can still be reliable for analysis & finding a specific research papers for the users.</li>
+            <li>Queries beginning with the word "what" for the BM25 paradigm tend to output incorrect results. Although this isn't common, it may be an output for longer queries especially when they are generic or vague qeuries. I.e. "What is..", which match a wide range of documents in BM25 due to keyword overlap. Furthermore, "what" queries are often weak in semantics for the BM25 paradigm. A solution for this could be stripping the queries with phrases that contain "what is" or "what are".  </li>
+            <li>Recent releases of SOLR do not work on the developers machine, this could be an internal issue. This limits the developer to features in solr 9.5.0</li>
+        </ul>
 
         <h3>Instructions:</h3>
         <ul>
