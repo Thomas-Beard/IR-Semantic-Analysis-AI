@@ -150,7 +150,8 @@ def upload_documents(xml_path):
             abstract = " ".join(text.split()[:50])
             embedding = bert_model.encode(text).tolist()
             docs.append({
-                "id": doc.findtext("docno", "").strip(),
+                # "id": doc.findtext("docno", "").strip(),
+                "id": str(int(doc.findtext("docno", "0").strip())),
                 "title": doc.findtext("title", "").strip(),
                 "author": doc.findtext("author", "").strip(),
                 "text": doc.findtext("text", "").strip(),
