@@ -4,6 +4,7 @@ import subprocess
 import os
 import datetime
 import numpy as np
+import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import (QTextEdit, QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QPushButton,QHBoxLayout, QTableWidget, QTableWidgetItem, QComboBox, 
                              QHeaderView, QStatusBar, QMessageBox, QTabWidget, QScrollArea, QStackedWidget)
@@ -11,7 +12,6 @@ from PyQt5.QtCore import QProcess, QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
 from sentence_transformers import SentenceTransformer
 from xml.etree import ElementTree as ET
 from pathlib import Path
