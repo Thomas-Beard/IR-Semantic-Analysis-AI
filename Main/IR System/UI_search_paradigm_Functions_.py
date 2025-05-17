@@ -1,13 +1,11 @@
-from pathlib import Path
-
 import sys
 import requests
 import subprocess
+import os
+import datetime
 from PyQt5.QtWidgets import (QTextEdit, QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QPushButton,QHBoxLayout, QTableWidget, QTableWidgetItem, QComboBox, 
                              QHeaderView, QStatusBar, QMessageBox, QTabWidget)
-import os
-import datetime
 from PyQt5.QtCore import QProcess
 from PyQt5.QtCore import QThread, pyqtSignal
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -15,7 +13,6 @@ from matplotlib.figure import Figure
 from sentence_transformers import SentenceTransformer
 from xml.etree import ElementTree as ET
 from pathlib import Path
-from PyQt5.QtWidgets import QScrollArea
 
 SOLR_SELECT_URL = 'http://localhost:8990/solr/research-papers/select'
 SOLR_QUERY_URL = 'http://localhost:8990/solr/research-papers/query'
@@ -366,7 +363,7 @@ class InfoTab(QWidget):
         The goal is to visualize search results, analyze scoring behavior, examine how relevance shifts across query types and search paradigms.
         Furthermore, users such as researchers and students (both a common beneficiary searching for research papers) can use this product to find the most relatable paper for their research. 
         However, due to the main limitation where the collection only contains 1,400 documents of topics available; Aerodynamics, Thermal analysis, Structual mechanics, Hypersonic flight & Gas dynamics.
-        This means the product will only return a fixed amount of search results & only the papers related to the topics in the collection which means the data provided may not be 100% accurate, but can still be reliable for analysis & finding a specific research papers for the users.
+        This means the product will only return a max amount of search results (i.e. 50 results max) & only the papers related to the topics in the collection which means the data provided may not be 100% accurate, but can still be reliable for analysis & finding a specific research papers for the users.
         </p>
 
         <h3>Instructions:</h3>
