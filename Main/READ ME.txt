@@ -27,7 +27,7 @@ o The TREC collection, relevance assessments and queries provided by: https://gi
 				Main/
 				├── IR System/
 				│   ├── collection_updates.py
-				│   ├── UI_search_paradigm_Functions_.py
+				│   ├── IR_Main.py
 				│   ├── cran.all.1400.xml	  [Provided by... located in Important Information]
 				│   ├── cran.qry.xml	      [Provided by... located in Important Information]
 				│   └── cranqrel.trec.txt	  [Provided by... located in Important Information]
