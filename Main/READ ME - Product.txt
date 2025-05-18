@@ -1,0 +1,86 @@
+ ---------------------------------------------
+|            Structure for READ ME            |
+ ---------------------------------------------
+1. Important Information
+2. Product Directory Structure
+3. Installation Instructions - Full Product
+4. Module Explanation
+
+
+ ----------------------------------------------
+|	         Important Information             |
+ ----------------------------------------------
+o Due to the size of the executable file (final product) which was over 700 MB and modern compression methods were not enough, I moved the final product into this OneDrive for easy accessibility: https://cityuni-my.sharepoint.com/:f:/g/personal/thomas_beard_city_ac_uk/EhDHJkZrZilFpqYddBSOY8QBLtj4K9pJ2hGdYCW6mWSEQw?e=i5lJjS
+
+o The system only currently works with the exact dependencies installed listed in the Installation Instructions. (Please check Installation Instructions for further detail).
+
+o It is vital that all requirements and dependencies are installed before running the product. (Please check Installation Instructions for further detail).
+
+o The product has only been tested on a Windows OS and therefore should only be ran on the same OS. 
+
+o The pre-trained model the semantic and hybrid paradigm in the main system uses, is from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+o The TREC collection, relevance assessments and queries provided by: https://github.com/oussbenk/cranfield-trec-dataset/tree/main
+
+o Using solr version 9.5.0 from: https://archive.apache.org/dist/solr/solr/
+
+
+ ----------------------------------------------
+|	       Product Directory Structure         |
+ ----------------------------------------------
+				Main/
+				├── IR System/
+				|	├── dist/				[Folder containing final product initially located in OneDrive, move to IR System Directory]
+				|	|	└── main.exe
+				|	|
+				│   ├── collection_updates.py
+				│   ├── IR_Main.py
+				│   ├── cran.all.1400.xml	  [Provided by... located in Important Information]
+				│   ├── cran.qry.xml	      [Provided by... located in Important Information]
+				│   └── cranqrel.trec.txt	  [Provided by... located in Important Information]
+				|
+				├── jdk-17/         [Read Installation Instructions]
+				|
+				├── solr-9.5.0/
+				|
+				├── zookeeper/
+				|
+				├── READ ME.txt
+				├── requirements.txt
+				└── temp.bat
+
+Note: Please have the folder structure exactly as shown above for smooth testing and analysis.
+
+
+ --------------------------------------------------------
+|        Installation Instructions - Full Product        |
+ --------------------------------------------------------
+Please note that these dependencies are required even when running main.exe. They must be installed and configured before using the application.
+
+1. Go into the shared OneDrive link and download the dist folder containing the final product, "main.exe". 
+2. Move the dist folder into the IR system directory as shown in the Product Directory Structure above.
+3. Install Java JDK 17 zip file from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
+4. Extract the folder into the main root directory and rename it to "jdk-17". (See product directory structure for guidance)
+5. Modifying environment variables:
+	5.1. Modify/Add the variables "JAVA_HOME" and change the value to the path for jdk-17
+	5.2. Open the Path Variable and add "%JAVA_HOME%\bin", then move it to the top of the list. 
+	5.3. Save and Apply the changes
+6. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
+7. Download Microsoft Visual C++ Redistributable 64 bit from: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+8. Run main.exe and happy searching.
+
+
+ -------------------------------------
+|	       Module Explanation         |
+ -------------------------------------
+=== SOLR COLLECTION UPDATES ===
+collection_updates.py: This script manages the initial SolrCloud collection setup and document indexing, including schema creation and semantic vector embedding. This includes the following operations: Solr Availability checks, collection creation, Schema Configuration, Semantic Embedding for the pretrained BERT model.
+temp.bat: This batch file automates the process of setting up the standalone zookeper, solr in cloud mode and using the correct java environment.
+
+=== USER INTERFACE & MAIN PARADIGM FUNCTIONS ===
+IR_Main.py: This is the main entry point for the entire UI-based application. This includes the following operations: Connection handling, Post-Launch checks, Collection creation calling collection_updates.py, Search execution, evaluation metric support.
+
+=== CRANFIELD COLLECTION FILES === 
+cran.all.1400.xml: Contains 1400 documents in an XML format structured with tags. 
+cran.qry.xml: Contains queries that simulate user questions in an XML format structured with tags. 
+cranqrel.trec.txt: Contains relevance judgements where each line maps a query ID to a relevant document ID and given a relevance score (I.e. 1 = relevant, 0 = not relevant).
