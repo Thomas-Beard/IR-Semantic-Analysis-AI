@@ -60,7 +60,7 @@ QREL_PATH = str(Path(__file__).resolve().parent / "cranqrel.trec.txt")
 QRELS = load_qrels(QREL_PATH)
 
 
-def evaluate_results(retrieved_ids, relevant_ids, k=10):
+def evaluate_results(retrieved_ids, relevant_ids, k=50):
     def normalize(ids):
         return set(str(int(str(doc).strip())) for doc in ids if str(doc).strip().isdigit())
 
