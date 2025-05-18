@@ -5,6 +5,9 @@ import os
 import datetime
 import numpy as np
 import matplotlib.pyplot as plt
+import runpy
+import io
+import contextlib
 from PyQt5.QtWidgets import (QTextEdit, QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, 
                              QPushButton,QHBoxLayout, QTableWidget, QTableWidgetItem, QComboBox, 
                              QHeaderView, QStatusBar, QMessageBox, QTabWidget, QScrollArea, QStackedWidget)
@@ -333,12 +336,6 @@ class SearchTab(QWidget):
                 print(f"[DEBUG] Error evaluating {mode}: {e}")
 
         self.graphs_tab.plot_metric_comparison(metrics)
-        print("[DEBUG] Available qrel keys (sample):", sorted(QRELS.keys())[:10])
-        print("[DEBUG] Total queries with qrels:", len(QRELS))
-
-        print("[DEBUG] Using query_id:", query_id)
-
-
 
     def run_search(self):
         if self.query_input.currentIndex() == -1:
@@ -369,9 +366,6 @@ class SearchTab(QWidget):
         # self.results_table.resizeColumnsToContents()
 
         self.doc_abstracts = {}
-
-        for doc in docs[:5]:
-            print("[DEBUG] Returned ID:", doc.get("id"))
 
         for row, doc in enumerate(docs):
             doc_id = doc.get('id', 'N/A')
@@ -419,8 +413,15 @@ class SearchTab(QWidget):
 
 class SolrProcessWidget(QWidget):
     def __init__(self, bat_file_path="temp.bat"):
+
+        if getattr(sys, 'frozen', False):
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.dirname(os.path.abspath(__file__))
+
+        self.bat_file_path = os.path.join(base_path, "temp.bat")
         super().__init__()
-        self.bat_file_path = bat_file_path
+        # self.bat_file_path = bat_file_path
         self.process = QProcess(self)
         self.init_ui()
 
@@ -512,21 +513,13 @@ class SolrProcessWidget(QWidget):
             self.status_label.setText("Connection Status: Disconnected")
 
     def run_create_collection(self):
+        script_path = Path(__file__).resolve().parent / "collection_updates.py"
+        output_buffer = io.StringIO()
+
         try:
-            from subprocess import run
-            script_path = Path(__file__).resolve().parent / "collection_updates.py"
-
-            python_exe = sys.executable
-
-            result = run(
-                [python_exe, str(script_path)],
-                capture_output=True,
-                text=True
-            )
-
-            self.output_console.append("Create Collection Output:\n" + result.stdout)
-            if result.stderr:
-                self.output_console.append("Errors:\n" + result.stderr)
+            with contextlib.redirect_stdout(output_buffer):
+                runpy.run_path(str(script_path), run_name="__main__")
+            self.output_console.append("Create Collection Output:\n" + output_buffer.getvalue())
         except Exception as e:
             self.output_console.append(f"Failed to run create_collection.py: {e}")
 
