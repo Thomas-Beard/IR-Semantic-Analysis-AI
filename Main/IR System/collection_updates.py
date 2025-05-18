@@ -11,8 +11,6 @@ COLLECTION_NAME = "research-papers"
 
 bert_model = SentenceTransformer('all-MiniLM-L6-v2')
 
-
-
 def check_collection_exists():
     print("[INFO] Checking if collection exists...")
     try:
