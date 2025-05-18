@@ -1,0 +1,76 @@
+ ---------------------------------------------
+|            Structure for READ ME            |
+ ---------------------------------------------
+1. Important Information
+2. Full Directory Structure
+3. Installation Instructions - Full Product (Also found in the Main Directory READ ME)
+4. Module Explanation (Can be found in Main Directory READ ME)
+
+
+ ----------------------------------------------
+|	         Important Information             |
+ ----------------------------------------------
+o This section is repeated and is found in the Main Directory READ ME.txt file (See Full Directory Structure)
+
+o Due to the size of the executable file (final product) which was over 700 MB and modern compression methods were not enough, I moved the final product into this OneDrive for easy accessibility: https://cityuni-my.sharepoint.com/:f:/g/personal/thomas_beard_city_ac_uk/EhDHJkZrZilFpqYddBSOY8QBLtj4K9pJ2hGdYCW6mWSEQw?e=i5lJjS
+
+o The system only currently works with the exact dependencies installed listed in the Installation Instructions. (Please check Installation Instructions for further detail).
+
+o It is vital that all requirements and dependencies are installed before running the product. (Please check Installation Instructions for further detail).
+
+o The product has only been tested on a Windows OS and therefore should only be ran on the same OS. 
+
+o The pre-trained model the semantic and hybrid paradigm in the main system uses, is from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+o The TREC collection, relevance assessments and queries provided by: https://github.com/oussbenk/cranfield-trec-dataset/tree/main
+
+o Using solr version 9.5.0 from: https://archive.apache.org/dist/solr/solr/
+
+
+
+ ----------------------------------------------
+|	       Full Directory Structure         |
+ ----------------------------------------------
+
+IR-Semantic-Analysis
+├── Documentation
+│   ├── A Comparative Analysis of BM25, Semantic, and Hybrid Retrieval Models in Scientific Document Search By Thomas Beard.docx
+│   ├── READ ME.txt
+│   └── source code
+│       (Note: The READ ME.txt here is the same as the one in the IR System folder — included for documentation purposes.)
+│
+├── Main
+│   ├── IR System
+│   │   ├── dist
+│   │   │   └── main.exe
+│   │   ├── collection_updates.py
+│   │   ├── IR_Main.py
+│   │   ├── cran.all.1400.xml
+│   │   ├── cran.qry.xml
+│   │   ├── cranqrel.trec.txt
+│   │   └── READ ME.txt
+│   │
+│   ├── jdk-17
+│   ├── solr-9.5.0
+│   ├── zookeeper
+│   ├── requirements.txt
+│   └── temp.bat
+└── (End of Structure)
+
+
+ --------------------------------------------------------
+|        Installation Instructions - Full Product        |
+ --------------------------------------------------------
+Please note that these dependencies are required even when running main.exe. They must be installed and configured before using the application.
+
+1. Go into the shared OneDrive link and download the dist folder containing the final product, "main.exe". 
+2. Move the dist folder into the IR system directory as shown in the Product Directory Structure above.
+3. Install Java JDK 17 zip file from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
+4. Extract the folder into the main root directory and rename it to "jdk-17". (See full directory structure for guidance)
+5. Modifying environment variables:
+	5.1. Modify/Add the variables "JAVA_HOME" and change the value to the path for jdk-17
+	5.2. Open the Path Variable and add "%JAVA_HOME%\bin", then move it to the top of the list. 
+	5.3. Save and Apply the changes
+6. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
+7. Download Microsoft Visual C++ Redistributable 64 bit from: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+8. Run main.exe and happy searching.
