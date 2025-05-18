@@ -48,7 +48,7 @@ o The TREC collection, relevance assessments and queries provided by: https://gi
  --------------------------------------------------------
 Please note that these dependencies are required even when running main.exe. They must be installed and configured before using the application.
 
-1. Install Java JDK 17 from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
+1. Install Java JDK 17 zip file from: https://adoptium.net/en-GB/temurin/releases/?version=17&os=windows
 2. Extract the folder into the main root directory and rename it to "jdk-17". (See product directory structure for guidance)
 3. Modifying environment variables:
 	3.1. Modify/Add the variables "JAVA_HOME" and change the value to the path for jdk-17
@@ -58,6 +58,7 @@ Please note that these dependencies are required even when running main.exe. The
 5. Extract the folder into the main root directory and rename it to "solr-9.5.0" (See product directory structure for guidance)
 6. Unzip standalone zookeeper and make sure it is in the same directory as Main. (See product directory structure for guidance)
 7. Download libraries from the requirements text file via pip command (pip install -r requirements.txt)
+8. Download Microsoft Visual C++ Redistributable 64 bit from: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
 8. Run main.exe and happy searching
 
 
